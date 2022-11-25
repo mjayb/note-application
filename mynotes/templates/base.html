@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Mynotebook application</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="keywords" content="Weblog a Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link href="{% static 'mynotes/css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+	
+	<link href="{% static 'mynotes/css/jquery.desoslide.css' %}" rel="stylesheet">
+	<link href="{% static 'mynotes/css/style.css' %}" rel='stylesheet' type='text/css' />
+	<link href="{% static 'mynotes/css/fontawesome-all.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+	<link href="/fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+	    rel="stylesheet">
+</head>
+
+<body> 
+	<!--Header-->
+
+	<header>
+		
+
+
+
+		         
+		<div class="top-bar_sub_w3layouts container-fluid">
+			<div class="row">
+				<div class="col-md-4 logo text-left">
+					<a class="navbar-brand" href="{% url 'mynotes:index' %}">
+						<i class="bi bi-pen"></i> Mynotes</a>
+						
+				</div>
+				<div class="col-md-4 top-forms text-center mt-lg-3 mt-md-1 mt-0">
+					{% if request.user.is_authenticated %}
+					Welcome! {{request.user.username}}
+					
+					{% endif %}
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+
+			<div class="header_top" id="home">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<button class="navbar-toggler navbar-toggle-right mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#menu" 
+							 aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+				   </button>
+
+				   <div class="collapse navbar-collapse" id="menu">
+					<ul class="navbar-nav mr-auto">
+						{% if request.user.is_authenticated %}
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'mynotes:home' %}">Home
+								<span class="sr-only">(current)</span>
+							</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'mynotes:add_note' %}">+Add Notes</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'mynotes:account_settings' %}">Settings</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'mynotes:logout' %}">Logout</a>
+						</li>
+							{% else %}
+							<li class="nav-item active">
+								<a class="nav-link" href="{% url 'mynotes:index' %}">Home
+									<span class="sr-only">(current)</span>
+								</a>
+							</li>
+						
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'mynotes:register' %}">Register</a>
+							</li>
+							
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'mynotes:login' %}">Login</a>
+							</li>
+							{% endif %}
+
+					</ul>
+				</div>
+				{% if request.user.is_authenticated %}
+				<form action="" method="GET" class="form-inline my-2 my-lg-0 header-search">
+					{% csrf_token %}
+					<input class="form-control mr-sm-2" type="search" placeholder="Search for notes here..." name="q" required="">
+					<button class="btn btn1 my-2 my-sm-0" type="submit">
+						<i class="bi bi-search"></i>
+					</button>
+					
+				</form>
+				{% endif%}
+			</div>
+			
+		
+			
+		</div>
+				
+					</div>
+				</nav>
+
+			</div>
+	</header>
+	
+
+    {% block body %}
+	{% endblock body%}
+
+
+
+
+	<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+	<!-- Grid container -->
+	<div class="container p-4">
+	  <!-- Section: Social media -->
+	  <section class="mb-4">
+		<!-- Whatsaap -->
+		<a class="btn btn-outline-light btn-floating m-1" href="https://wa.me/2348098116023" role="button"
+		  ><i class="bi bi-whatsapp"></i
+		></a>
+  
+		<!-- Twitter -->
+		<a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/mjayb_" role="button"
+		  ><i class="bi bi-twitter"></i
+		></a>
+  
+		<!-- Google -->
+		<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+		  ><i class="bi bi-google"></i
+		></a>
+  
+		<!-- Instagram -->
+		<a class="btn btn-outline-light btn-floating m-1" href="https://instagram.com/mjayb__?igshid=YmMyMTA2M2Y=" role="button"
+		  ><i class="bi bi-instagram"></i
+		></a>
+  
+		<!-- Linkedin -->
+		<a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/maryjane-amarachi-538271250" role="button"
+		  ><i class="bi bi-linkedin"></i
+		></a>
+  
+		<!-- Github -->
+		<a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+		  ><i class="bi bi-github"></i
+		></a>
+	  </section>
+	  <!-- Section: Social media -->
+  
+	  <!-- Section: Form -->
+	  <section class="">
+		<form action="">
+		  <!--Grid row-->
+		  <div class="row d-flex justify-content-center">
+			<!--Grid column-->
+			<div class="col-auto">
+			  <p class="pt-2 text-white">
+				<strong>Sign up for our newsletter</strong>
+			  </p>
+			</div>
+			<!--Grid column-->
+  
+			<!--Grid column-->
+			<div class="col-md-5 col-12">
+			  <!-- Email input -->
+			  <div class="form-outline form-white mb-4">
+				<input type="email" id="form5Example21" class="form-control" />
+				<label class="form-label" for="form5Example21">Email address</label>
+			  </div>
+			</div>
+			<!--Grid column-->
+  
+			<!--Grid column-->
+			<div class="col-auto">
+			  <!-- Submit button -->
+			  <button type="submit" class="btn btn-outline-light mb-4">
+				Subscribe
+			  </button>
+			</div>
+			<!--Grid column-->
+		  </div>
+		  <!--Grid row-->
+		</form>
+	  </section>
+	  <!-- Section: Form -->
+  
+	  <!-- Section: Text -->
+	  <section class="mb-4">
+		<p  class="text-white">
+			Short notes are quick to write and correct, tightly focused, and easy to review, and can be read (and comprehended) rapidly; therefore, they have the potential to reach a wide audience.
+		</p>
+	  </section>
+	  <!-- Section: Text -->
+  
+	 
+	<!-- Grid container -->
+  
+	<!-- Copyright -->
+	<div class="text-center p-3 text-white" style="background-color: rgba(0, 0, 0, 0.2);">
+		&copy All Rights Reserved By
+		<span ><a  class="text-primary" href="#">RYMATECH CONSULT</a></span>
+	</div>
+	
+	<!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+
+	
+	
+</body>
+
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>

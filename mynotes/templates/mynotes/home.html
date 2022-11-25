@@ -1,0 +1,66 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+
+	<!--//header-->
+
+	<!--/banner-->
+	{% extends 'base.html' %}
+	{% block body %}
+	
+
+	
+	<div class="container"> 
+		
+
+		<br>{% if messages %}
+				{% for message in messages %}
+					 <p class="alert alert-{{message.tags}}">{{message}}</p>
+				{% endfor %}
+				
+			{% endif %}	
+		
+			{% if check %}
+			<h2>Recent Notes</h2>
+			
+			{%else%}
+			<h2>Please add a note!</h2>
+			{%endif%}
+        <div class="row">
+            <div class="col-md-6 ">
+
+{% for note in mynotes %}
+           
+<h5 class="text-info pt-2">{{note.title}}</h5>
+<p>{{note.description | truncatechars:"200" | linebreaks }}</p>
+	
+<div class="options">
+	<a href="{% url 'mynotes:update' note.id%}" class="btn btn-success">Edit</a>
+	<a href="/delete/{{note.id}}/" class="btn btn-danger">Delete</a>
+</div>
+<br>
+<h6>Created: <strong>{{note.time | timesince}}</strong></h6>
+<hr>
+{%empty%}
+<h4 class='text-info my-3'>No note found....</h4>
+{% endfor %}
+			</div>
+			
+		</div> 
+		<p> No of notes : {{count}}</p>
+		</div>
+
+	</div>
+	<br>
+	<br>
+  
+
+		{% endblock body %}
+		
+		
+
+

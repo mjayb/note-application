@@ -1,0 +1,26 @@
+
+	{% extends 'base.html' %}
+	{% block body %}
+<div class="container mt-5">
+<div class='row align-content-center'>
+    <div class="col-md-6">
+        <h2>Are you sure you want to delete?</h2>
+    <div class="form">
+        <form action="" method="post">
+            {% csrf_token %}
+        
+
+            {{ form.as_p }}
+         <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger">Yes</button>
+                <a href="{%url 'mynotes:home'%}" class="btn btn-success">Cancel</a>
+               
+            </div>
+            <br>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+{%endblock%}

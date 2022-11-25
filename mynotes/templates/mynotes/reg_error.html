@@ -1,0 +1,20 @@
+    
+{% extends 'base.html' %}
+{% block body %}
+
+
+{% if messages %}
+{% for message in messages %}
+         <h2 class="alert alert-{{message.tags}}">{{message}}</h2>
+{% endfor %}
+
+{% endif %}	
+       <div class="form-group">
+       <a href="{%url 'mynotes:register'%}" class="btn btn-success">Go back</a>
+          </div>   
+               <br>
+                    
+
+
+
+        {% endblock body%}

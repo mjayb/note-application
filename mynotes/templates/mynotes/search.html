@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+	{% block body %}
+
+	
+	<div class="container"> 
+		
+		<br>
+		
+        <h1>Recent Notes</h1>
+        <div class="row">
+            <div class="col-md-6 ">
+{% if notes %}
+{% for note in mynotes %}
+           
+<h2 class="text-info pt-2">{{note.title}}</h2>
+<p>{{note.description}}</p>
+<div class="options">
+	<a href="{% url 'mynotes:update' note.id%}" class="btn btn-success">Edit</a>
+	<a href="/delete/{{note.id}}/" class="btn btn-danger">Delete</a>
+</div>
+<br>
+<h6>Created: <strong>{{note.time | timesince}}</strong></h6>
+<hr>
+{% endfor %}
+{% else %}
+<h4 class = "msg bg-light">Note not found!</h4>
+			</div>
+           
+		</div> 
+        </div>
+    </div>
+{% endif %}
+  
+
+		{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-9">
+            <br>
+            <h2 class="text-dark">Update Note</h2>
+        
+    <div class="form">
+        
+         <form action="" method="POST">
+             {% csrf_token %}
+             {{updateform.as_p}}
+             <hr>
+             <button type="submit" class="btn-info btn">Update</button>
+         </form>
+    </div>
+</div>
+</div>
+ </div>
+ <br>
+ <br>
+
+{% endblock body%}
