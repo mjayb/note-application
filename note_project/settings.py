@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, environs, dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -78,13 +78,19 @@ WSGI_APPLICATION = 'note_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+env=environs.Env()
+environs.Env.read_env()
+
+DATABASES={
+    'default':dj_database_url.parse(env('DATABASE_URL'))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -140,4 +146,4 @@ CORS_ALLOWED_ORIGINS=[
 ]
 
 
-CSRF_TRUSTED_ORIGINS=["https://mynotes-production.up.railway.app"]
+# CSRF_TRUSTED_ORIGINS=["https://mynotes-production.up.railway.app"]
